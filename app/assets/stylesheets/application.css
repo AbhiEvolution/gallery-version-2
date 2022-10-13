@@ -1,0 +1,146 @@
+    /*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+.card .card-header {
+    text-align: center;
+}
+
+img:hover {
+    transform: scale(1.07);
+}
+
+a:hover {
+    transform: scale(1.2);
+}
+
+body {
+    background-color: #4158D0;
+    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    margin: 0;
+    padding: 0;
+
+}
+
+h1,
+h2 {
+    text-align: center;
+    border-bottom: 0.5vmin solid black;
+}
+
+i {
+    color: gray;
+    font-size: 30px;
+    padding-left: 2vmin;
+}
+
+.green {
+    color: green;
+    float: left;
+}
+
+.right {
+    float: right;
+    color: red;
+}
+
+.col-md-4 {
+    margin-top: 2vmin;
+}
+
+.col-md-4 .card-body img {
+    height: 30vmin;
+    width: 100%;
+}
+
+.col-md-3 {
+    margin-top: 2vmin;
+}
+
+.col-md-3 .card-body img {
+    height: 25vmin;
+    width: 100%;
+}
+
+@media (min-width: 280px) and (max-width: 653px) {
+    .col-md-4 {
+        margin-top: 2vmin;
+    }
+    .col-md-4 .card-body img {
+        height: 60vmin;
+    }
+    .col-md-3 {
+        margin-top: 2vmin;
+    }
+    .col-md-3 .card-body img {
+        height: 50vmin;
+    }
+}
+
+.date {
+    border: 0.5px solid rgb(190, 186, 186);
+    padding: 0.9vmin;
+    border-radius: 0.5vmin;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.gap {
+    padding-top: 12vmin;
+    padding-bottom: 12vmin;
+}
+
+.pl {
+    float: right;
+}
+
+
+
+.animate {
+   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    -webkit-animation: gradient 15s ease infinite;
+    animation: gradient 15s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+    /*
+
+
+

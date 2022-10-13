@@ -1,0 +1,28 @@
+<div class="row">
+  <%@album.photos.each do |image|%>
+  <div class="col-md-3">
+    <div class="card">
+      <!-- <div class="card-header"> -->
+        <%#= link_to image do %>
+        <!-- <i class="fas fa-expand-wide green"></i> -->
+        <%#end %>
+      <!-- </div> -->
+      <div class="card-body">
+        <%= link_to image do %>
+        <%= image_tag(image,class:"card-top-img img-fluid") %>
+        <%end %>
+        <%#=image.id%>
+      </div>
+    </div>
+  </div>
+  <%end%>
+</div>
+<%if user_signed_in?%>
+<div class="my-4">
+  <%= link_to "Back", all_albums_path, class: "btn btn-secondary mx-2" %>
+</div>
+<%else %>
+<div class="my-4">
+  <%= link_to "Back", root_path, class: "btn btn-secondary mx-2" %>
+</div>
+<%end%>
