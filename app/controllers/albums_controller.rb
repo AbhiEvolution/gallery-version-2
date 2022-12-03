@@ -28,6 +28,7 @@ class AlbumsController < ApplicationController
   end
 
   def create
+    debugger
     @album = current_user.albums.new(album_params)
 
     if @album.save
@@ -38,7 +39,7 @@ class AlbumsController < ApplicationController
   end
 
   def add_photo
-    # debugger
+    # 
      @album = Album.find(params[:album_id])
   end
 
@@ -61,12 +62,6 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     redirect_to root_path
-  end
-
-  def delete_image
-    attachment = ActiveStorage::Attachment.find(params[:id])
-    attachment.purge # or use purge_later
-     redirect_back(fallback_location: albums_url)
   end
 
   private

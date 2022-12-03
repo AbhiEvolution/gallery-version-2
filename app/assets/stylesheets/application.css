@@ -1,18 +1,5 @@
-    /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import './bootstrap/dist/css/bootstrap';
+/* @import './font-awesome'; */
 
 .card .card-header {
     text-align: center;
@@ -46,14 +33,8 @@ i {
     padding-left: 2vmin;
 }
 
-.green {
-    color: green;
-    float: left;
-}
-
-.right {
-    float: right;
-    color: red;
+.bg-photo {
+    background-color: rgb(247, 247, 247);
 }
 
 .col-md-4 {
@@ -78,12 +59,15 @@ i {
     .col-md-4 {
         margin-top: 2vmin;
     }
+
     .col-md-4 .card-body img {
         height: 60vmin;
     }
+
     .col-md-3 {
         margin-top: 2vmin;
     }
+
     .col-md-3 .card-body img {
         height: 50vmin;
     }
@@ -111,7 +95,7 @@ i {
 
 
 .animate {
-   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     -webkit-animation: gradient 15s ease infinite;
     animation: gradient 15s ease infinite;
@@ -121,9 +105,11 @@ i {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -133,14 +119,14 @@ i {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
 }
-    /*
 
-
-
+/*

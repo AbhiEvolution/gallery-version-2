@@ -6,7 +6,7 @@ class Album < ApplicationRecord
   has_many :tags, through: :taggings
   validates :cover_photo, presence: true
   validates :photos, presence: true
-  has_many :likes, dependent: :destroy
+  # has_many :likes, dependent: :destroy
   validates :title, length: {
                       minimum: 3,
                       maximum: 10,
@@ -31,8 +31,4 @@ class Album < ApplicationRecord
   def all_tags
     tags.map(&:name).join(", ")
   end
-
-  # def to_param
-  #   "#{id} #{title}".parameterize
-  # end
 end

@@ -1,48 +1,6 @@
 <h1>All Publish Album of <%=current_user.name%> are <%=@albums.count%></h1>
 <div class="row">
   <% @albums.each do |album| %>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-header">
-          <%= link_to album_path(album),method: :delete, data: { confirm: "Are you sure?" } do   %>
-            <i class="fas fa-times right"></i>
-          <%end %>
-          <%= link_to edit_album_path(album)do   %>
-            <i class="fas fa-edit green"></i>
-          <%end %>
-        </div>
-        <div class="card-body">
-          <% if album.cover_photo.attached? %>
-            <%= link_to album,class:"link" do%>
-              <%=image_tag(album.cover_photo,class: "card-top-img img-fluid") %>
-            <%end%> <%end%>
-        </div>
-        <div class="card-footer text-center">
-          <a data-bs-toggle="collapse"  href="#album-<%= album.id %>" role="button" aria-expanded="false" ><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
-        </div>
-        <section class="collapse multi-collapse" id="album-<%= album.id%>">
-          <div class="card-footer">
-            <span>
-              <strong>Title:</strong>
-              <%=album.title%>
-            </span>
-            <span class="pl">
-              <strong>Description:</strong>
-              <%=album.description%>
-            </span>
-          </div>
-          <div class="card-footer">
-            <span>
-              <strong>Tags:</strong>
-              <%=album.all_tags %>
-            </span>
-            <span class="pl">
-              <strong>Total Photos:</strong>
-              <%=album.photos.count%>
-            </span>
-          </div>
-        </section>
-      </div>
-    </div>
+  <%= render 'albums/album', album: album %>
   <%end%>
 </div>

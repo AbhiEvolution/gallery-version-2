@@ -38,7 +38,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <div class="fa fa-user"></div>
-                <b><%= current_user.email %></b>
+                <b><%= current_user.name %></b>
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <%= link_to edit_user_registration_path, class: "dropdown-item #{'active fw-bold' if current_page?(edit_user_registration_path)}" do %>

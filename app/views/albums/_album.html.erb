@@ -1,0 +1,70 @@
+<div class="col-md-4">
+    <div class="card">
+        <div class="card-header">
+            <div class="d-flex justify-content-between">
+                <div>
+                    <%= link_to edit_album_path(album) do %>
+                    <i class="fas fa-edit text-success"></i>
+                    <%end %>
+                </div>
+                <div>
+                    <a href="#" class="" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                        <i class="fas fa-times text-danger"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <% if album.cover_photo.attached? %>
+            <%= link_to album,class:"link" do%>
+            <%=image_tag(album.cover_photo,class: "card-top-img img-fluid") %>
+            <%end%> <%end%>
+        </div>
+        <div class="card-footer text-center">
+            <a data-bs-toggle="collapse" href="#album-<%= album.id %>" role="button" aria-expanded="false"><i
+                    class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
+        </div>
+        <section class="collapse multi-collapse" id="album-<%= album.id%>">
+            <div class="card-footer">
+                <span>
+                    <strong>Title:</strong>
+                    <%=album.title%>
+                </span>
+                <span class="pl">
+                    <strong>Description:</strong>
+                    <%=album.description%>
+                </span>
+            </div>
+            <div class="card-footer">
+                <span>
+                    <strong>Tags:</strong>
+                    <%=album.all_tags %>
+                </span>
+                <span class="pl">
+                    <strong>Total Photos:</strong>
+                    <%=album.photos.count%>
+                </span>
+            </div>
+        </section>
+    </div>
+</div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog  modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <h5 class=" text-secondary" id="exampleModalLabel">Confirm</h5>
+                <p class="lead">Are you sure you want to Delete this Address?</p>
+                <div class="d-flex justify-content-center">
+                    <div>
+                        <a href="#" class="btn btn-outline-success mx-2" data-bs-dismiss="modal">Cancel</a>
+                    </div>
+                    <div>
+                        <%= button_to album_path(album), method:  :delete ,  class:'btn btn-outline-danger mx-2"' do %>
+                        Delete
+                        <%end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

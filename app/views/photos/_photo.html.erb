@@ -1,0 +1,49 @@
+<h1>Photos</h1>
+<div class="row">
+    <%@album.photos.each do |image|%>
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex  justify-content-between">
+                    <div> <%= link_to image do %>
+                        <i class="fas fa-expand-wide text-success"></i>
+                        <%end %>
+                    </div>
+                    <div>
+                        <a href="#" class="" data-bs-toggle="modal" data-bs-target="#deleteModalphoto">
+                            <i class="fas fa-times text-danger"></i>
+                        </a>
+                        <div class="modal fade" id="deleteModalphoto" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog  modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body text-center">
+                                        <h5 class=" text-secondary" id="exampleModalLabel">Confirm</h5>
+                                        <p class="lead">Are you sure you want to Delete this Address?</p>
+                                        <div class="d-flex justify-content-center">
+                                            <div>
+                                                <a href="#" class="btn btn-outline-success mx-2"
+                                                    data-bs-dismiss="modal">Cancel</a>
+                                            </div>
+                                            <div>
+                                                <%= button_to album_photo_path(album_id: @album,photo_id: image),method: :delete, class:'btn btn-outline-danger' do %>
+                                                Delete
+                                                <%end %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <%= link_to image do%>
+                <%= image_tag(image,class:"card-top-img img-fluid") %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <%end%>
+</div>

@@ -1,38 +1,37 @@
 class LikesController < ApplicationController
-  before_action :find_album
-  before_action :find_like, only: [:destroy]
+  before_action :find_photo
 
   def create
-    debugger
+    album = Album.find(params[:album_id])
+    p = params[:photo_id]
+    photo = p.to_i
     if already_liked?
+      redirect_to home_path(album)
       flash[:notice] = "You can't like more than once"
     else
-      @album.likes.create(user_id: current_user.id)
+      Like.create(user_id: current_user.id, photo_id: photo)
+      redirect_to home_path(album)
     end
-    redirect_to all_albums_path(@album)
   end
 
   def already_liked?
-    Like.where(user_id: current_user.id, album_id: params[:album_id]).exists?
+    Like.where(user_id: current_user.id, photo_id: params[:photo_id]).exists?
   end
 
   def destroy
-    if !already_liked?
+   @like = Like.find(params[:like_id])
+    album = Album.find(params[:album_id])
+    if !(already_liked?)
       flash[:notice] = "Cannot unlike"
     else
       @like.destroy
     end
-    redirect_to all_albums_path(@album)
-  end
-
-  def find_like
-    @like = @album.likes.find(params[:id])
+    redirect_to home_path(album)
   end
 
   private
 
-  def find_album
-    binding.pry
-    @album = ActiveStorage::Attachment.find(params[:id])
+  def find_photo
+    @photo = ActiveStorage::Attachment.find(params[:photo_id])
   end
 end

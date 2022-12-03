@@ -2,26 +2,25 @@
 
 Rails.application.routes.draw do
   devise_for :users do
-    get '/users/sign_out' => 'devise/sessions#destroy'
+    get "/users/sign_out" => "devise/sessions#destroy"
   end
-  root 'home#index'
-  get 'all_albums', to: 'albums#all_albums'
-  get 'draft_album', to: 'albums#draft_album'
-  get 'published_album', to: 'albums#published_album'
+  root "home#index"
+  get "all_albums", to: "albums#all_albums"
+  get "draft_album", to: "albums#draft_album"
+  get "published_album", to: "albums#published_album"
   resources :albums do
-   get  :add_photo, to: 'albums#add_photo'
-   patch :add_photo, to: 'albums#add_photo'
-    resources :likes
-    collection do
-      delete 'delete_image'
+    get :add_photo, to: "albums#add_photo"
+    patch :add_photo, to: "albums#add_photo"
+    resources :photos do
+      resources :likes
     end
   end
   resources :home do
     collection do
-      match 'search' => 'home#search', via: %i[get post], as: :search
+      match "search" => "home#search", via: %i[get post], as: :search
     end
   end
-  get 'search', to: 'albums#search'
+  get "search", to: "albums#search"
   resources :home
   resources :tags
 end
