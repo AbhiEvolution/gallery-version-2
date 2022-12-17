@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_14_104512) do
+ActiveRecord::Schema.define(version: 2022_12_16_163014) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -51,15 +51,12 @@ ActiveRecord::Schema.define(version: 2022_10_14_104512) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer "photo_id", null: false
+    t.integer "album_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_likes_on_album_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -92,6 +89,8 @@ ActiveRecord::Schema.define(version: 2022_10_14_104512) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "likes", "albums"
+  add_foreign_key "likes", "users"
   add_foreign_key "taggings", "albums"
   add_foreign_key "taggings", "tags"
 end

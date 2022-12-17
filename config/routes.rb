@@ -1,20 +1,17 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   devise_for :users do
     get "/users/sign_out" => "devise/sessions#destroy"
   end
   root "home#index"
-  get "all_albums", to: "albums#all_albums"
-  get "draft_album", to: "albums#draft_album"
-  get "published_album", to: "albums#published_album"
+
   resources :albums do
     get :add_photo, to: "albums#add_photo"
     patch :add_photo, to: "albums#add_photo"
-    resources :photos do
-      resources :likes
-    end
+    get "all_albums", to: "albums#all_albums", on: :collection
+    resources :likes
+    resources :photos
   end
+
   resources :home do
     collection do
       match "search" => "home#search", via: %i[get post], as: :search

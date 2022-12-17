@@ -1,22 +1,13 @@
-# frozen_string_literal: true
-
 class AlbumsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @albums = current_user.albums
+    @published_albums = current_user.albums.where(published: true)
+    @unpublished_albums = current_user.albums.where(published: false)
   end
 
   def all_albums
     @albums = Album.where(published: true)
-  end
-
-  def draft_album
-    @albums = current_user.albums.where(published: false)
-  end
-
-  def published_album
-    @albums = current_user.albums.where(published: true)
   end
 
   def show
@@ -28,7 +19,6 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    debugger
     @album = current_user.albums.new(album_params)
 
     if @album.save
@@ -39,8 +29,7 @@ class AlbumsController < ApplicationController
   end
 
   def add_photo
-    # 
-     @album = Album.find(params[:album_id])
+    @album = Album.find(params[:album_id])
   end
 
   def edit

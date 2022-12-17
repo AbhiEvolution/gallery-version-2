@@ -1,12 +1,19 @@
-<h1>All Albums of <%=current_user.name%> are <%=@albums.count%></h1>
+<%if @unpublished_albums.present? %>
+<h1>Draft Albums</h1>
+<%end%>
+
 <div class="row">
-  <% @albums.each do |album| %>
+  <% @unpublished_albums.each do |album| %>
   <%= render 'albums/album', album: album %>
   <%end%>
 </div>
 
+<%if @published_albums.present? %>
+<h1>Published Albums </h1>
+<%end%>
 
-
-
-
-
+<div class="row">
+  <% @published_albums.each do |album| %>
+  <%= render 'albums/album', album: album %>
+  <%end%>
+</div>

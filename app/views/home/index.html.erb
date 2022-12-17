@@ -1,45 +1,7 @@
-<h1>All Published Albums Of all Users are <%=@albums.count%></h1>
+<!-- <h1>All Published Albums Of all Users are <%=@albums.count%></h1> -->
+<h1 class="mt-2">All Published Albums</h1>
 <div class="row">
   <% @albums.each do |album| %>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-header">
-        <strong>Name:</strong>
-        <%=album.user.name%>
-      </div>
-      <div class="card-body">
-        <% if album.cover_photo.attached? %>
-        <%=link_to home_path(id: album.id) do%>
-        <%=image_tag(album.cover_photo,class: " img-fluid") %>
-        <%end%> <%end%>
-      </div>
-      <div class="card-footer text-center">
-        <a data-bs-toggle="collapse" href="#album-<%= album.id %>" data-toggle="collapse" role="button"
-          aria-expanded="false"><i class="fa fa-arrow-circle-down" style="font-size:23px"></i></a>
-      </div>
-      <section class="collapse multi-collapse" id="album-<%= album.id%>">
-        <div class="card-footer">
-          <span>
-            <strong>Title:</strong>
-            <%=album.title%>
-          </span>a
-          <span class="pl">
-            <strong>Description:</strong>
-            <%=album.description%>
-          </span>
-        </div>
-        <div class="card-footer">
-          <span>
-            <strong>Tags:</strong>
-            <%=album.all_tags %>
-          </span>
-          <span class="pl">
-            <strong>Total Photos:</strong>
-            <%=album.photos.count%>
-          </span>
-        </div>
-      </section>
-    </div>
-  </div>
+  <%= render 'shared/album', album: album %>
   <%end%>
 </div>

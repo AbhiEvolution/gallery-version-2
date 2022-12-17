@@ -1,9 +1,9 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  photo: 1
-  user: 1
+  album: one
+  user: one
 
 two:
-  photo: 1
-  user: 1
+  album: two
+  user: two

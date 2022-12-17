@@ -2,27 +2,10 @@
   <%@album.photos.each do |image|%>
   <div class="col-md-3">
     <div class="card">
-      <!-- <div class="card-header"> -->
-      <%#= link_to image do %>
-      <!-- <i class="fas fa-expand-wide green"></i> -->
-      <%#end %>
-      <!-- </div> -->
       <div class="card-body">
         <%= link_to image do %>
         <%= image_tag(image,class:"card-top-img img-fluid") %>
         <%end %>
-        <% if current_user%>
-        <% pre_like = Like.find { |like| like.photo_id == image.id  || current_user == like.user_id } %>
-        <% if pre_like %>
-        <%= button_to  album_photo_like_path(album_id: @album,photo_id: image, like_id: pre_like), style:"border:none;float:right;background-color:white;margin-top:1rem", method: :delete  do %>
-        <i class="fa fa-heart fs-3" aria-hidden="true" style="color:red; "></i>
-        <%end%>
-        <% else %>
-        <%= button_to  album_photo_likes_path(album_id: @album,photo_id: image), method: :post, style:"border:none;float:right;background-color:white;margin-top:1rem" do%>
-        <i class="fa fa-heart-o fs-3"></i>
-        <%end%>
-        <% end %>
-        <%end%>
       </div>
     </div>
   </div>
@@ -30,7 +13,7 @@
 </div>
 <%if user_signed_in?%>
 <div class="my-4">
-  <%= link_to "Back", all_albums_path, class: "btn btn-secondary mx-2" %>
+  <%= link_to "Back", all_albums_albums_path, class: "btn btn-secondary mx-2" %>
 </div>
 <%else %>
 <div class="my-4">

@@ -1,6 +1,6 @@
-<h1>All Published Albums Of all Users are <%=@albums.count%></h1>
+<h1>All Published Albums</h1>
 <div class="row">
   <% @albums.each do |album| %>
-  <%= render 'albums/album', album: album %>
+  <%= render 'shared/album', album: album %>
   <%end%>
 </div>
