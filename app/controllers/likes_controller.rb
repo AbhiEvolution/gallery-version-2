@@ -3,13 +3,18 @@ class LikesController < ApplicationController
   before_action :find_like, only: [:destroy]
 
   def create
-    if already_liked?
-      redirect_to home_path(album)
-      flash[:notice] = "You can't like more than once"
+     if user_signed_in?
+      if already_liked?
+        redirect_to home_path(album)
+        flash[:notice] = "You can't like more than once"
+      else
+        @album.likes.create(user_id: current_user.id)
+        flash[:notice] = "You like the #{@album.title} album of #{@album.user.name}"
+        redirect_to all_albums_albums_path
+      end
     else
-      @album.likes.create(user_id: current_user.id)
-      flash[:notice] = "You like the #{@album.title} album of #{@album.user.name}"
-      redirect_to all_albums_albums_path
+      flash[:notice] = "You have to login to continue."
+      redirect_to home_index_path
     end
   end
 
@@ -26,7 +31,7 @@ class LikesController < ApplicationController
       flash[:notice] = "Cannot unlike"
     else
       @like.destroy
-            flash[:alert] = "You dislike the #{@album.title} album of #{@album.user.name}"
+      flash[:alert] = "You dislike the #{@album.title} album of #{@album.user.name}"
     end
     redirect_to all_albums_albums_path
   end

@@ -3,6 +3,11 @@ class AlbumsController < ApplicationController
 
   def index
     @published_albums = current_user.albums.where(published: true)
+    @published_albums.each do |album|
+      album.photos.each do |photo|
+        album.photos.find_by(blob_id: photo)
+      end
+    end
     @unpublished_albums = current_user.albums.where(published: false)
   end
 
